@@ -242,7 +242,7 @@ Please find the details of randomly selected candidates for the BA test for <spa
 Dear Medical Team,
 %0D%0A
 %0D%0A
-Please find the details of randomly selected candidates for the BA test for <span id='stvDateBody'></span>.
+Please find the details of randomly selected candidates for the BA test.
 	" target="_blank">
 
             <div class="grid-item">
@@ -270,7 +270,7 @@ Please find the details of randomly selected candidates for the BA test for <spa
 Dear Medical Team,
 %0D%0A
 %0D%0A
-Please find the details of randomly selected candidates for the BA test for <span id='stvDateBody'></span>.
+Please find the details of randomly selected candidates for the BA test.
 	" target="_blank">
 
             <div class="grid-item">
@@ -471,32 +471,30 @@ Please find the details of randomly selected candidates for the BA test.
     </div>
     </a>
     <script>
-        function updateDates() {
-            const today = new Date();
-            const nextDay = new Date(today);
-            nextDay.setDate(today.getDate() + 1);
+       function updateDates() {
+    const today = new Date();
+    const nextDay = new Date(today);
+    nextDay.setDate(today.getDate() + 1);
 
-            const day = nextDay.getDate().toString().padStart(2, '0'); // Get day and pad with 0 if needed
-            const month = nextDay.toLocaleString('en-US', {
-                month: 'short'
-            }).toUpperCase(); // Get short month name in uppercase
-            const year = nextDay.getFullYear();
+    const day = nextDay.getDate().toString().padStart(2, '0');
+    const month = nextDay.toLocaleString('en-US', { month: 'short' }).toUpperCase();
+    const year = nextDay.getFullYear();
 
-            const nextDateFormatted = `${day} ${month}`;
+    const nextDateFormatted = `${day} ${month}`;
 
-            document.getElementById('currentDateHeader').textContent = `Date: ${nextDateFormatted}`;
+    document.getElementById('currentDateHeader').textContent = `Date: ${nextDateFormatted}`;
 
-            // Update dates in mailto links
-            const dateIds = ['amdDate', 'amdDateBody', 'bhuDate', 'bhuDateBody', 'bomDate', 'bomDateBody', 'ixyDate', 'ixyDateBody', 'sagDate', 'sagDateBody', 'stvDate', 'stvDateBody', 'consolidatedDate', 'ixyRosterDate'];
-            dateIds.forEach(id => {
-                if (document.getElementById(id)) {
-                    document.getElementById(id).textContent = nextDateFormatted;
-                }
-            });
-        }
+    // Update mailto links dynamically
+    const mailtoLinks = document.querySelectorAll('.base-name'); // Select all mailto links
 
-        // Call the function when the page loads
-        window.onload = updateDates;
+    mailtoLinks.forEach(link => {
+        let href = link.getAttribute('href');
+        href = href.replace(/<span id='(.*?)Date(Body)?'><\/span>/, nextDateFormatted); // Replace the span with the date.
+        link.setAttribute('href', href); // Update the href attribute.
+    });
+}
+
+window.onload = updateDates;
     </script>
 </body>
 
