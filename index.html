@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Date Display</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       background: linear-gradient(to right, #ece9e6, #ffffff);
@@ -13,6 +14,7 @@
       justify-content: center;
       height: 100vh;
       margin: 0;
+      padding: 20px;
     }
 
     h1 {
@@ -22,36 +24,72 @@
     }
 
     .date-box {
-      background: #ffffff;
-      padding: 20px 40px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      text-align: center;
-    }
+  padding: 20px;
+  width: 100%;
+  max-width: 500px;
+  box-sizing: border-box;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+  background-color: #edf7f0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
-    .date a {
-      font-size: 28px;
-      color: #34495e;
-      text-decoration: none;
-      display: block;
-      margin: 10px 0;
-    }
+.date {
+  background-color: #f0f9f5;
+  border-radius: 12px;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
 
-    .date a:hover {
-      text-decoration: underline;
-      color: #2c3e50;
-    }
+.date a {
+  background: #b8d6c0;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: #2c3e50;
+  font-weight: bold;
+  overflow-wrap: break-word;
+}
   </style>
 </head>
 <body>
   <div class="date-box">
     <h1>Select Date</h1>
     <div class="date">
-      <a href="todayDate.html" target="_blank">Today </a>
-      <a href="nextDate.html">Next Date </a>
+      <a id="todayLink" href="#">Today's Date</a>
+    </div>
+    <div class="date">
+      <a id="nextLink" href="#">Next Date</a>
     </div>
   </div>
 
+  <script>
+    const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(today.getDate() + 1);
 
+    function formatDate(date) {
+      const day = date.getDate().toString().padStart(2, '0');
+      const month = date.toLocaleString('en-US', { month: 'short' }).toUpperCase();
+      return `${day} ${month}`;
+    }
+
+    const todayFormatted = formatDate(today);
+    const tomorrowFormatted = formatDate(tomorrow);
+
+    document.getElementById("todayLink").textContent = `Today: ${todayFormatted}`;
+    document.getElementById("todayLink").href = `#${todayFormatted}`;
+
+    document.getElementById("nextLink").textContent = `Next Date: ${tomorrowFormatted}`;
+    document.getElementById("nextLink").href = `#${tomorrowFormatted}`;
+  </script>
 </body>
 </html>
