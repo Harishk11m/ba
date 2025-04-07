@@ -71,25 +71,6 @@
     </div>
   </div>
 
-  <script>
-    const today = new Date();
-    const tomorrow = new Date(today);
-    tomorrow.setDate(today.getDate() + 1);
-
-    function formatDate(date) {
-      const day = date.getDate().toString().padStart(2, '0');
-      const month = date.toLocaleString('en-US', { month: 'short' }).toUpperCase();
-      return `${day} ${month}`;
-    }
-
-    const todayFormatted = formatDate(today);
-    const tomorrowFormatted = formatDate(tomorrow);
-
-    document.getElementById("todayLink").textContent = `Today: ${todayFormatted}`;
-    document.getElementById("todayLink").href = `#${todayFormatted}`;
-
-    document.getElementById("nextLink").textContent = `Next Date: ${tomorrowFormatted}`;
-    document.getElementById("nextLink").href = `#${tomorrowFormatted}`;
-  </script>
+  
 </body>
 </html>
