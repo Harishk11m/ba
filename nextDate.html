@@ -11,8 +11,9 @@
             border-radius: 21px;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            background: linear-gradient(to bottom, gray 0%, black 100%);
-            padding: 15px 15px 15px 15px;
+            /* Changed to a softer gradient */
+            background: linear-gradient(to bottom, #f0f0f0 0%, #e0e0e0 100%);
+            padding: 15px;
             gap: 22px;
             width: auto;
         }
@@ -21,42 +22,42 @@
             height: 60px;
             width: 60px;
             border-radius: 21px;
-            background: linear-gradient(to bottom, black 0%, gray 100%);
-            border: 1px solid rgba(0, 0, 0, 0.8);
+            /* Changed to a more vibrant, but still readable gradient */
+            background: linear-gradient(to bottom, #4CAF50 0%, #81C784 100%);
+            border: 1px solid rgba(0, 0, 0, 0.1); /* Softer border */
             font-size: 15px;
             text-align: center;
             text-decoration: none;
-            padding: 22px 22px 22px 22px;
-            transition: transform .5s;
-            /* Animation */
+            padding: 22px;
+            transition: transform 0.3s; /* Slightly faster transition */
             font-weight: bold;
-            box-shadow: 10px 10px 10px white;
+            box-shadow: 5px 5px 5px #ddd; /* Subtler shadow */
+            color: white; /* Keep text white for contrast */
         }
 
         .grid-item:hover {
-            background-color: white;
-            box-shadow: 2px 2px 2px white;
-            transform: scale(.95);
-            /* (331% zoom - Note: if the zoom is To large, it will go outside of the viewport) */
+            background-color: #fff;
+            box-shadow: 2px 2px 2px #ccc; /* Even subtler hover shadow */
+            transform: scale(0.98); /* Less dramatic scaling */
             word-wrap: break-word;
+            color: #333; /* Darker text on hover */
         }
 
         h1 {
-            color: #FF0000;
+            color: #007bff; /* A nice blue */
             text-align: center;
             font-size: 31px;
-            text-align: center;
         }
 
         .base-name {
             text-decoration: none;
-            color: white;
+            color: inherit; /* Inherit color from grid-item */
             word-wrap: break-word;
         }
 
         .fullForm {
             font-size: 11px;
-            color: white;
+            color: #eee; /* Lighter text for full form */
             word-wrap: break-word;
             font-weight: normal;
         }
