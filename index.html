@@ -1,76 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Date Display</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      background: linear-gradient(to right, #ece9e6, #ffffff);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      padding: 20px;
-    }
+    <meta charset="UTF-8">
+    <title>Date Display</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: linear-gradient(to right, #ece9e6, #ffffff);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
 
-    h1 {
-      color: #2c3e50;
-      font-size: 36px;
-      margin-bottom: 10px;
-    }
+        h1 {
+            color: #2c3e50;
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
 
-    .date-box {
-  padding: 20px;
-  width: 100%;
-  max-width: 500px;
-  box-sizing: border-box;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  text-align: center;
-  background-color: #edf7f0;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
+        .date-box {
+            padding: 20px;
+            width: 100%;
+            max-width: 500px;
+            box-sizing: border-box;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            background-color: #edf7f0;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
 
-.date {
-  background-color: #f0f9f5;
-  border-radius: 12px;
-  padding: 10px;
-  width: 100%;
-  box-sizing: border-box;
-}
+        .date {
+            background-color: #f0f9f5;
+            border-radius: 12px;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
 
-.date a {
-  background: #b8d6c0;
-  padding: 16px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  display: block;
-  width: 100%;
-  box-sizing: border-box;
-  text-decoration: none;
-  color: #2c3e50;
-  font-weight: bold;
-  overflow-wrap: break-word;
-}
-  </style>
+        .date a {
+            background: #b8d6c0;
+            padding: 16px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: bold;
+            overflow-wrap: break-word;
+        }
+
+        /* Style for the round logo div */
+        .logo-container {
+            width: 80px; /* Adjust size as needed */
+            height: 80px; /* Should be equal to width for a perfect circle */
+            border-radius: 50%; /* Makes it round */
+            background-color: #3498db; /* Example background color */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white; /* Example text color */
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px; /* Add some space below the logo */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Optional shadow */
+            overflow: hidden; /* Ensures any content stays within the circle */
+        }
+
+        /* If you have an image for the logo */
+        .logo-container img {
+            width: 70%;
+            height: 70%;
+            object-fit: cover; /* Ensures the image covers the circle without distortion */
+            border-radius: 50%; /* Important for the image to also be round */
+        }
+    </style>
 </head>
 <body>
-  <div class="date-box">
-    <h1>Select Date</h1>
-    <div class="date">
-      <a href="todayDate.html">Today's Date</a>
-    </div>
-    <div class="date">
-      <a href="nextDate.html">Next Date</a>
-    </div>
-  </div>
+    <div class="logo-container">
+        <span><img src="logo.png" alt="Harish Kumar"></span>
 
-  
+        </div>
+
+    <div class="date-box">
+        <h1>Select Date</h1>
+        <div class="date">
+            <a href="todayDate.html">Today's Date</a>
+        </div>
+        <div class="date">
+            <a href="nextDate.html">Next Date</a>
+        </div>
+    </div>
 </body>
 </html>
