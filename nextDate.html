@@ -11,8 +11,8 @@
             border-radius: 21px;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            /* Changed to a softer gradient */
-            background: linear-gradient(to bottom, #f0f0f0 0%, #e0e0e0 100%);
+            /* Soft, modern background */
+            background: #f5f5f5;
             padding: 15px;
             gap: 22px;
             width: auto;
@@ -22,42 +22,44 @@
             height: 60px;
             width: 60px;
             border-radius: 21px;
-            /* Changed to a more vibrant, but still readable gradient */
-            background: linear-gradient(to bottom, #4CAF50 0%, #81C784 100%);
-            border: 1px solid rgba(0, 0, 0, 0.1); /* Softer border */
+            /* Clean, subtle gradient */
+            background: linear-gradient(to bottom, #ffffff 0%, #f0f0f0 100%);
+            border: 1px solid #ddd;
             font-size: 15px;
             text-align: center;
             text-decoration: none;
             padding: 22px;
-            transition: transform 0.3s; /* Slightly faster transition */
+            transition: transform 0.3s;
             font-weight: bold;
-            box-shadow: 5px 5px 5px #ddd; /* Subtler shadow */
-            color: white; /* Keep text white for contrast */
+            box-shadow: 3px 3px 5px #e0e0e0;
+            color: #333; /* Darker text for readability */
         }
 
         .grid-item:hover {
-            background-color: #fff;
-            box-shadow: 2px 2px 2px #ccc; /* Even subtler hover shadow */
-            transform: scale(0.98); /* Less dramatic scaling */
+            /* Slightly darker hover */
+            background: linear-gradient(to bottom, #e0e0e0 0%, #d0d0d0 100%);
+            box-shadow: 2px 2px 3px #ccc;
+            transform: scale(0.98);
             word-wrap: break-word;
-            color: #333; /* Darker text on hover */
         }
 
         h1 {
-            color: #007bff; /* A nice blue */
+            /* Muted, professional header */
+            color: #555;
             text-align: center;
             font-size: 31px;
         }
 
         .base-name {
             text-decoration: none;
-            color: inherit; /* Inherit color from grid-item */
+            color: inherit; /* Inherits color from grid-item */
             word-wrap: break-word;
         }
 
         .fullForm {
             font-size: 11px;
-            color: #eee; /* Lighter text for full form */
+            /* Subdued full form text */
+            color: #888;
             word-wrap: break-word;
             font-weight: normal;
         }
@@ -69,14 +71,61 @@
     <h1 id="currentDateHeader"></h1>
     <div class="grid-container">
         <! -- ----------------------AMD -------------------->
-        <a class="base-name" id="amdLink" href="#" target="_blank">
+        <a class="base-name" href="
+        mailto:
+            medical.amd@spicejet.com
+
+        ?cc=
+   amd.engg@spicejet.com,
+            admin.engg@spicejet.com,
+            javed.kalam@spicejet.com,
+            saket.singh,
+            uma.kumar@spicejet.com
+
+        &subject=
+            AMD //Candidates For BA Test // <span id='amdDate'></span>
+
+                 &body=
+Dear Medical Team,
+%0D%0A
+%0D%0A
+Please find the details of randomly selected candidates for the BA test for <span id='amdDateBody'></span>.
+
+%0D%0A
+%0D%0A
+    " target="_blank">
+
             <div class="grid-item">
                 AMD<br><span class="fullForm">Ahmedabad</span>
             </div>
         </a>
 
         <! -- -----------------------------BHU-------------- -------------------->
-        <a class="base-name" id="bhuLink" href="#" target="_blank">
+        <a class="base-name" href="
+        mailto:
+            medical.bhu@spicejet.com
+
+        ?cc=
+            bhu.engg@spicejet.com,
+            admin.engg@spicejet.com,
+            javed.kalam@spicejet.com,
+            sm.bhu@spicejet.com,
+            manish.tandon@spicejet.com,
+
+        &subject=
+            BHU //Candidates For BA Test // <span id='bhuDate'></span>
+
+                 &body=
+Dear Medical Team,
+%0D%0A
+%0D%0A
+Please find the details of randomly selected candidates for the BA test for <span id='bhuDateBody'></span>.
+
+%0D%0A
+%0D%0A
+    " target="_blank">
+
+
             <div class="grid-item">
                 BHU<br><span class="fullForm">Bhavnagar</span>
             </div>
@@ -84,7 +133,32 @@
 
 
         <! -- ---------------------------BOM------------------ -------------------->
-        <a class="base-name" id="bomLink" href="#" target="_blank">
+        <a class="base-name" href="
+        mailto:
+
+            medical.bom@spicejet.com
+
+
+        ?cc=
+
+            bom.engg@spicejet.com,
+            admin.engg@spicejet.com,
+            bom.stores@spicejet.com,
+            javed.kalam@spicejet.com
+        &subject=
+
+            BOM //Candidates For BA Test // <span id='bomDate'></span>
+
+                 &body=
+Dear Medical Team,
+%0D%0A
+%0D%0A
+Please find the details of randomly selected candidates for the BA test for <span id='bomDateBody'></span>.
+
+%0D%0A
+%0D%0A
+    " target="_blank">
+
             <div class="grid-item">
                 BOM<br><span class="fullForm">Mumbai</span>
             </div>
@@ -92,22 +166,94 @@
 
 
 <! -- ---------------------------BOM DRIVER------------------ -------------------->
-       <a class="base-name" id="bomDriverLink" href="#" target="_blank">
+        <a class="base-name" href="
+        mailto:
+
+            medical.bom@spicejet.com
+
+
+        ?cc=
+
+            bom.engg@spicejet.com,
+            admin.engg@spicejet.com,
+            bom.stores@spicejet.com,
+            javed.kalam@spicejet.com
+        &subject=
+
+            BOM DRIVER //Candidates For BA Test // <span id='bomDate'></span>
+
+                 &body=
+Dear Medical Team,
+%0D%0A
+%0D%0A
+Please find the details of randomly selected candidates for the BA test for <span id='bomDateBody'></span>.
+
+%0D%0A
+%0D%0A
+    " target="_blank">
+
             <div class="grid-item">
                 BOM DRIVER<br><span class="fullForm">Mumbai</span>
             </div>
         </a>
 
 <! -- ---------------------------IXY------------------ -------------------->
+        <a class="base-name" href="
+        mailto:
+            medical.ixy@spicejet.com,
 
-        <a class="base-name" id="ixyLink" href="#" target="_blank">
+        ?cc=
+            harish.k@spicejet.com,
+            javed.kalam@spicejet.com,
+            admin.engg@spicejet.com,
+            ixy.engg@spicejet.com,
+            ravindra.chavan@spicejet.com
+
+        &subject=
+
+            IXY //Candidates For BA Test // <span id='ixyDate'></span>
+
+                 &body=
+Dear Medical Team,
+%0D%0A
+%0D%0A
+Please find the details of randomly selected candidates for the BA test for <span id='ixyDateBody'></span>.
+
+%0D%0A
+%0D%0A
+
+    " target="_blank">
+
             <div class="grid-item">
                 IXY<br><span class="fullForm">Kandla</span>
             </div>
         </a>
 
         <! -- --------------------------------SAG--------------- -------------------->
-        <a class="base-name" id="sagLink" href="#" target="_blank">
+        <a class="base-name" href="
+        mailto:
+            medical.sag@spicejet.com,
+
+        ?cc=
+            sachin.magar@spicejet.com,
+            shirdi.engg@spicejet.com,
+            admin.engg@spicejet.com,
+            javed.kalam@spicejet.com
+
+        &subject=
+
+            SAG //Candidates For BA Test // <span id='sagDate'></span>
+
+                 &body=
+Dear Medical Team,
+%0D%0A
+%0D%0A
+Please find the details of randomly selected candidates for the BA test for <span id='sagDateBody'></span>.
+
+%0D%0A
+%0D%0A
+    " target="_blank">
+
             <div class="grid-item">
                 SAG<br><span class="fullForm">Shirdi</span>
             </div>
@@ -115,7 +261,27 @@
 
 
         <! -- --------------------------------STV--------------- -------------------->
-        <a class="base-name" id="stvLink" href="#" target="_blank">
+        <a class="base-name" href="
+        mailto: medical.metas@gmail.com,
+                medical.stv@spicejet.com
+
+
+        ?cc=javed.kalam@spicejet.com,
+            surat.engg@spicejet.com,
+            admin.engg@spicejet.com,
+            ashutosh.chandan@spicejet.com
+
+
+        &subject=
+        STV  //Candidates For BA Test // <span id='stvDate'></span>
+
+     &body=
+Dear Medical Team,
+%0D%0A
+%0D%0A
+Please find the details of randomly selected candidates for the BA test for <span id='stvDateBody'></span>.
+    " target="_blank">
+
             <div class="grid-item">
                 STV<br><span class="fullForm">Surat</span>
             </div>
@@ -124,7 +290,26 @@
 
 
         <! -- --------------------------------PBD--------------- -------------------->
-        <a class="base-name" id="pbdLink" href="#" target="_blank">
+        <a class="base-name" href="
+        mailto: medical.pbd@spicejet.com
+
+
+        ?cc=javed.kalam@spicejet.com,
+            admin.engg@spicejet.com,
+            pbd.engg@spicejet.com,
+            chetan.bhanka@spicejet.com
+
+
+        &subject=
+            PBD //Candidates For BA Test // <span id='pbdDate'></span>
+
+     &body=
+Dear Medical Team,
+%0D%0A
+%0D%0A
+Please find the details of randomly selected candidates for the BA test for <span id='pbdDateBody'></span>.
+    " target="_blank">
+
             <div class="grid-item">
                 PBD<br><span class="fullForm">Porbandar</span>
             </div>
@@ -132,50 +317,191 @@
 
         <! -- ----------------------------------------------- -------------------->
 
-        <a class="base-name" id="blankLink1" href="#" target="_blank">
+        <a class="base-name" href="
+        mailto:
+
+
+        ?cc=
+
+
+        &subject=
+             //Candidates For BA Test // <span id='blank1Date'></span>
+
+     &body=
+Dear Medical Team,
+%0D%0A
+%0D%0A
+Please find the details of randomly selected candidates for the BA test.
+    " target="_blank">
+
             <div class="grid-item">
                 <br><br>
             </div>
         </a>
-        <a class="base-name" id="blankLink2" href="#" target="_blank">
+        <a class="base-name" href="
+        mailto:
+
+
+        ?cc=
+
+
+        &subject=
+             //Candidates For BA Test // <span id='blank2Date'></span>
+
+     &body=
+Dear Medical Team,
+%0D%0A
+%0D%0A
+Please find the details of randomly selected candidates for the BA test.
+    " target="_blank">
+
             <div class="grid-item">
                 <br><br>
             </div>
         </a>
 
-        <a class="base-name" id="blankLink3" href="#" target="_blank">
+        <a class="base-name" href="
+        mailto:
+
+
+        ?cc=
+
+
+        &subject=
+             //Candidates For BA Test // <span id='blank3Date'></span>
+
+     &body=
+Dear Medical Team,
+%0D%0A
+%0D%0A
+Please find the details of randomly selected candidates for the BA test.
+    " target="_blank">
+
             <div class="grid-item">
                 <br><br>
             </div>
         </a>
 
-        <a class="base-name" id="blankLinkTemporary" href="#" target="_blank">
+        <a class="base-name" href="
+        mailto:
+
+
+        ?cc=admin.engg@spicejet.com
+
+
+        &subject=
+             //Candidates For BA Test // <span id='blank4Date'></span>
+
+     &body=
+Dear Medical Team,
+%0D%0A
+%0D%0A
+Please find the details of randomly selected candidates for the BA test.
+    " target="_blank">
+
             <div class="grid-item">
                 BLANK<br><span class="fullForm">Temporary</span>
             </div>
         </a>
 
-        <a class="base-name" id="attachmentLink" href="#" target="_blank">
+        <a class="base-name" href="
+        mailto:
+
+
+        ?cc= harish.k@spicejet.com,
+             ixy.engg@spicejet.com,
+
+
+        &subject=
+
+
+     &body=
+Dear Sir
+%0D%0A
+%0D%0A
+Please find the attachment below.
+    " target="_blank">
+
             <div class="grid-item">
                 ATT<br><span class="fullForm">Attachment</span>
             </div>
         </a>
 
 
-        <a class="base-name" id="consolidatedLink" href="#" target="_blank">
+        <a class="base-name" href="
+        mailto:admin.engg@spicejet.com
+
+
+        ?cc=harish.k@spicejet.com
+
+
+        &subject=
+
+        BOM  // CONSOLIDATED SHEET // <span id='consolidatedDate'></span>
+
+             &body=
+Dear Admin,
+%0D%0A
+%0D%0A
+Greetings of the day!
+%0D%0A
+%0D%0A
+Please find the consolidated sheet attached below.
+    " target="_blank">
+
             <div class="grid-item">
                 CONSOLIDATED SHEET
             </div>
         </a>
 
-        <a class="base-name" id="ixyRosterLink" href="#" target="_blank">
+        <a class="base-name" href="
+        mailto:admin.engg@spicejet.com
+
+
+        ?cc=harish.k@spicejet.com,
+            ixy.engg@spicejet.com,
+            javed.kalam@spicejet.com
+
+
+        &subject=
+
+            IXY // ROSTER// <span id='ixyRosterDate'></span>
+
+                     &body=
+Dear Admin,
+%0D%0A
+%0D%0A
+Greetings of the day!
+%0D%0A
+%0D%0A
+Please find the IXY roster sheet attached below.
+
+    " target="_blank">
+
             <div class="grid-item">
                 IXY<br>ROSTER
             </div>
         </a>
 
 
-        <a class="base-name" id="sasReportLink" href="#" target="_blank">
+        <a class="base-name" href="
+        mailto: javed.kalam@spicejet.com
+
+
+        ?cc= ixy.engg@spicejet.com,
+             harish.k@spicejet.com
+
+
+        &subject=
+             SAS REPORT //
+
+     &body=
+Dear Medical Team,
+%0D%0A
+%0D%0A
+Please find the details of randomly selected candidates for the BA test.
+    " target="_blank">
+
             <div class="grid-item">
                 SAS REPORT<br><span class="fullForm">Jan,Apr,July,Oct</span>
             </div>
@@ -185,77 +511,29 @@
     <script>
         function updateDates() {
             const today = new Date();
-            const nextDay = new Date(today);
-            nextDay.setDate(today.getDate() + 1);
+            const tomorrow = new Date(today);
+            tomorrow.setDate(today.getDate() + 1); // Set to tomorrow's date
 
-            const day = nextDay.getDate().toString().padStart(2, '0');
-            const month = nextDay.toLocaleString('en-US', {
+            const day = tomorrow.getDate().toString().padStart(2, '0');
+            const month = tomorrow.toLocaleString('en-US', {
                 month: 'short'
             }).toUpperCase();
-            const year = nextDay.getFullYear();
+            const year = tomorrow.getFullYear();
 
-            const nextDateFormatted = `${day} ${month}`;
+            const formattedDate = `${day} ${month}`;
 
-            document.getElementById('currentDateHeader').textContent = `Date: ${nextDateFormatted}`;
+            document.getElementById('currentDateHeader').textContent = `Date: ${formattedDate}`;
 
             // Update mailto links dynamically
-            updateMailtoLink('amdLink', 'medical.amd@spicejet.com', 'amd.engg@spicejet.com,admin.engg@spicejet.com,javed.kalam@spicejet.com,saket.singh,uma.kumar@spicejet.com', 'AMD', nextDateFormatted);
-            updateMailtoLink('bhuLink', 'medical.bhu@spicejet.com', 'bhu.engg@spicejet.com,admin.engg@spicejet.com,javed.kalam@spicejet.com,sm.bhu@spicejet.com,manish.tandon@spicejet.com', 'BHU', nextDateFormatted);
-            updateMailtoLink('bomLink', 'medical.bom@spicejet.com', 'bom.engg@spicejet.com,admin.engg@spicejet.com,bom.stores@spicejet.com,javed.kalam@spicejet.com', 'BOM', nextDateFormatted);
-            updateMailtoLink('bomDriverLink', 'medical.bom@spicejet.com', 'bom.engg@spicejet.com,admin.engg@spicejet.com,bom.stores@spicejet.com,javed.kalam@spicejet.com', 'BOM', nextDateFormatted);
-            updateMailtoLink('ixyLink', 'medical.ixy@spicejet.com', 'harish.k@spicejet.com,javed.kalam@spicejet.com,admin.engg@spicejet.com,ixy.engg@spicejet.com,ravindra.chavan@spicejet.com', 'IXY', nextDateFormatted);
-            updateMailtoLink('sagLink', 'medical.sag@spicejet.com', 'sachin.magar@spicejet.com,shirdi.engg@spicejet.com,admin.engg@spicejet.com,javed.kalam@spicejet.com', 'SAG', nextDateFormatted);
-            updateMailtoLink('stvLink', 'medical.metas@gmail.com,medical.stv@spicejet.com', 'javed.kalam@spicejet.com,surat.engg@spicejet.com,admin.engg@spicejet.com,ashutosh.chandan@spicejet.com', 'STV', nextDateFormatted);
-            updateMailtoLink('pbdLink', 'medical.pbd@spicejet.com', 'javed.kalam@spicejet.com,admin.engg@spicejet.com,pbd.engg@spicejet.com,chetan.bhanka@spicejet.com', 'PBD', nextDateFormatted);
+            const mailtoLinks = document.querySelectorAll('.base-name'); // Select all mailto links
 
-            updateStaticLinks(nextDateFormatted); // Update static links
-        }
-
-        function updateMailtoLink(elementId, to, cc, cityCode, date) {
-            const link = document.getElementById(elementId);
-            if (link) {
-                let href = `mailto:${to}?cc=${cc}&subject=${cityCode} //Candidates For BA Test // ${date}&body=Dear Medical Team,%0D%0A%0D%0APlease find the details of randomly selected candidates for the BA test for ${date}.%0D%0A%0D%0A`;
-                link.setAttribute('href', href);
-            }
-        }
-
-        function updateStaticLinks(date) {
-            const blankLink1 = document.getElementById('blankLink1');
-            const blankLink2 = document.getElementById('blankLink2');
-            const blankLink3 = document.getElementById('blankLink3');
-            const blankLinkTemporary = document.getElementById('blankLinkTemporary');
-            const consolidatedLink = document.getElementById('consolidatedLink');
-            const ixyRosterLink = document.getElementById('ixyRosterLink');
-            const attachmentLink = document.getElementById('attachmentLink');
-            const sasReportLink = document.getElementById('sasReportLink');
-
-            const blankSubject = ` //Candidates For BA Test // ${date}`;
-            const blankBody = `Dear Medical Team,%0D%0A%0D%0APlease find the details of randomly selected candidates for the BA test.`;
-
-            if (blankLink1) {
-                blankLink1.href = `mailto:?cc=&subject=${blankSubject}&body=${blankBody}`;
-            }
-            if (blankLink2) {
-                blankLink2.href = `mailto:?cc=&subject=${blankSubject}&body=${blankBody}`;
-            }
-            if (blankLink3) {
-                blankLink3.href = `mailto:?cc=&subject=${blankSubject}&body=${blankBody}`;
-            }
-            if (blankLinkTemporary) {
-                blankLinkTemporary.href = `mailto:?cc=admin.engg@spicejet.com&subject=${blankSubject}&body=${blankBody}`;
-            }
-            if (consolidatedLink) {
-                consolidatedLink.href = `mailto:admin.engg@spicejet.com?cc=harish.k@spicejet.com&subject=BOM // CONSOLIDATED SHEET // ${date}&body=Dear Admin,%0D%0A%0D%0AGreetings of the day!%0D%0A%0D%0APlease find the consolidated sheet attached below.`;
-            }
-            if (ixyRosterLink) {
-                ixyRosterLink.href = `mailto:admin.engg@spicejet.com?cc=harish.k@spicejet.com,ixy.engg@spicejet.com,javed.kalam@spicejet.com&subject=IXY // ROSTER// ${date}&body=Dear Admin,%0D%0A%0D%0AGreetings of the day!%0D%0A%0D%0APlease find the IXY roster sheet attached below.`;
-            }
-            if (attachmentLink) {
-                attachmentLink.href = `mailto:?cc=harish.k@spicejet.com,ixy.engg@spicejet.com&subject=&body=Dear Sir%0D%0A%0D%0APlease find the attachment below.`;
-            }
-            if (sasReportLink) {
-                sasReportLink.href = `mailto:javed.kalam@spicejet.com?cc=ixy.engg@spicejet.com,harish.k@spicejet.com&subject=SAS REPORT //&body=Dear Medical Team,%0D%0A%0D%0APlease find the details of randomly selected candidates for the BA test.`;
-            }
+            mailtoLinks.forEach(link => {
+                let href = link.getAttribute('href');
+                // Replace all span placeholders with the formatted tomorrow's date.
+                // This regex now correctly targets all span IDs that contain "Date" or "DateBody"
+                href = href.replace(/<span id='(.*?)Date(Body)?'><\/span>/g, formattedDate);
+                link.setAttribute('href', href); // Update the href attribute.
+            });
         }
 
         window.onload = updateDates;
