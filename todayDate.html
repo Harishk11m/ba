@@ -7,89 +7,218 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>BA ROSTER MAIL</title>
     <style>
+        body {
+            font-family: 'Inter', sans-serif; /* Using Inter font */
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
         .grid-container {
-            border-radius: 21px;
+            border-radius: 12px; /* Rounded corners */
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            background: #f5f5f5;
-            padding: 15px;
-            gap: 22px;
-            width: auto;
-        }
-
-        .grid-item {
-            height: 60px;
-            width: 60px;
-            border-radius: 21px;
-            background: linear-gradient(to bottom, #ffffff 0%, #f0f0f0 100%);
-            border: 1px solid #ddd;
-            font-size: 15px;
-            text-align: center;
-            text-decoration: none;
-            padding: 22px;
-            transition: transform 0.3s;
-            font-weight: bold;
-            box-shadow: 3px 3px 5px #e0e0e0;
-            color: #333;
-        }
-
-        .grid-item:hover {
-            background: linear-gradient(to bottom, #e0e0e0 0%, #d0d0d0 100%);
-            box-shadow: 2px 2px 3px #ccc;
-            transform: scale(0.98);
-            word-wrap: break-word;
-        }
-
-        h1 {
-            color: #555;
-            text-align: center;
-            font-size: 31px;
-        }
-
-        .base-name {
-            text-decoration: none;
-            color: inherit;
-            word-wrap: break-word;
-        }
-
-        .fullForm {
-            font-size: 11px;
-            color: #888;
-            word-wrap: break-word;
-            font-weight: normal;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive grid */
+            background: #ffffff;
+            padding: 20px;
+            gap: 15px;
+            max-width: 1200px;
+            width: 100%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Soft shadow */
         }
 
         .grid-item-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 5px;
+            gap: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #f9f9fb;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .grid-item {
+            height: 80px; /* Adjusted size for better touch target */
+            width: 80px; /* Adjusted size for better touch target */
+            border-radius: 12px; /* Rounded corners */
+            background: linear-gradient(to bottom, #fefefe 0%, #e0e0e0 100%); /* Subtle gradient */
+            border: 1px solid #c0c0c0;
+            font-size: 14px;
+            text-align: center;
+            text-decoration: none;
+            padding: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+            font-weight: bold;
+            box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+            color: #333;
+            display: flex; /* Flexbox for vertical centering */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            line-height: 1.2;
+            cursor: pointer; /* Indicate interactivity */
+        }
+
+        .grid-item:hover {
+            background: linear-gradient(to bottom, #e0e0e0 0%, #d0d0d0 100%);
+            box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
+            transform: scale(0.98);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        .base-name {
+            text-decoration: none;
+            color: inherit;
+            word-wrap: break-word;
+            display: block; /* Ensure it takes full width/height of parent */
+        }
+
+        .fullForm {
+            font-size: 10px;
+            color: #666;
+            word-wrap: break-word;
+            font-weight: normal;
+        }
+
+        input[type="number"] {
+            width: 60px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 6px; /* Rounded corners */
+            text-align: center;
+            font-size: 14px;
+            margin-bottom: 5px; /* Spacing from the item */
         }
 
         #openAllBtn {
             display: block;
-            margin: 20px auto;
-            padding: 10px 20px;
+            margin: 30px auto;
+            padding: 12px 25px;
             font-size: 18px;
             font-weight: bold;
             color: white;
             background-color: #007BFF;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px; /* Rounded corners */
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
         }
 
         #openAllBtn:hover {
             background-color: #0056b3;
+            transform: translateY(-2px); /* Slight lift effect */
         }
 
         .date-container {
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin-bottom: 25px;
+            padding: 15px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        }
+
+        .date-container label {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="date"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px; /* Rounded corners */
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        /* Custom Alert Styling */
+        #custom-alert-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #custom-alert-box {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 350px;
+            width: 90%;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        #custom-alert-message {
+            font-size: 18px;
+            color: #333;
             margin-bottom: 20px;
         }
+
+        #custom-alert-box button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.2s ease;
+        }
+
+        #custom-alert-box button:hover {
+            background-color: #0056b3;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .grid-container {
+                padding: 15px;
+                gap: 10px;
+            }
+            .grid-item {
+                height: 70px;
+                width: 70px;
+                padding: 10px;
+                font-size: 12px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            #openAllBtn {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+        }
+
     </style>
 </head>
 
@@ -165,36 +294,67 @@
             </a>
         </div>
 
+    </div>
+
+    <!-- Custom Alert Overlay -->
+    <div id="custom-alert-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1000; justify-content: center; align-items: center;">
+        <div id="custom-alert-box">
+            <p id="custom-alert-message"></p>
+            <button onclick="document.getElementById('custom-alert-overlay').style.display = 'none';">OK</button>
         </div>
+    </div>
     
     <script>
+        // Custom Alert function
+        function showAlert(message) {
+            document.getElementById('custom-alert-message').textContent = message;
+            document.getElementById('custom-alert-overlay').style.display = 'flex';
+        }
+
         function updateDateHeader() {
             const dateInput = document.getElementById('dateInput').value;
+            console.log("updateDateHeader called. dateInput.value:", dateInput); // Debugging log
             if (dateInput) {
                 const date = new Date(dateInput);
+                if (isNaN(date.getTime())) { // Check for invalid date after parsing
+                    console.error("Invalid date parsed from dateInput:", dateInput); // Debugging log
+                    document.getElementById('currentDateHeader').textContent = `Date: Invalid Date`;
+                    return;
+                }
                 const day = date.getDate().toString().padStart(2, '0');
                 const month = date.toLocaleString('en-US', {
                     month: 'short'
                 }).toUpperCase();
                 document.getElementById('currentDateHeader').textContent = `Date: ${day} ${month}`;
+                console.log("Date header updated to:", `Date: ${day} ${month}`); // Debugging log
             } else {
                 document.getElementById('currentDateHeader').textContent = `Date: -- ---`;
+                console.log("Date input empty, header set to default."); // Debugging log
             }
         }
 
         function openAllMails() {
             const dateInput = document.getElementById('dateInput').value;
+            console.log("openAllMails called. dateInput.value:", dateInput); // Debugging log
+
             if (!dateInput) {
-                alert("Please select a date first.");
+                showAlert("Please select a date first."); // Using custom alert
                 return;
             }
 
             const date = new Date(dateInput);
+            if (isNaN(date.getTime())) { // Check for invalid date after parsing
+                showAlert("Invalid date selected. Please select a valid date."); // Using custom alert
+                console.error("Invalid date parsed for opening mails:", dateInput); // Debugging log
+                return;
+            }
+
             const day = date.getDate().toString().padStart(2, '0');
             const month = date.toLocaleString('en-US', {
                 month: 'short'
             }).toUpperCase();
             const formattedDate = `${day} ${month}`;
+            console.log("Formatted date for mailto links:", formattedDate); // Debugging log
 
             const containers = document.querySelectorAll('.grid-item-container');
 
@@ -204,12 +364,19 @@
 
                 // Get the count from the input field; default to 0 if not a number
                 const count = parseInt(input.value) || 0;
+                console.log(`Processing link for ${link.textContent.trim().split('\n')[0]} with count: ${count}`); // Debugging log
 
                 let href = link.getAttribute('href');
-                href = href.replace(/<span.*?>.*?<\/span>/g, formattedDate);
+                href = href.replace(/<span.*?>.*?<\/span>/g, formattedDate); // Replace date placeholder
+                
+                // Decode URI component to handle existing %0D%0A etc. correctly before opening
+                const decodedHref = decodeURIComponent(href);
+                // Re-encode only the date part to prevent double encoding issues
+                const finalHref = decodedHref.replace(formattedDate, encodeURIComponent(formattedDate));
 
                 for (let i = 0; i < count; i++) {
-                    window.open(href, '_blank');
+                    console.log(`Opening mail for ${link.textContent.trim().split('\n')[0]}, instance ${i + 1}. Href: ${finalHref}`); // Debugging log
+                    window.open(finalHref, '_blank');
                 }
             }
         }
@@ -222,8 +389,10 @@
             const year = today.getFullYear();
             const month = (today.getMonth() + 1).toString().padStart(2, '0');
             const day = today.getDate().toString().padStart(2, '0');
-            document.getElementById('dateInput').value = `${year}-${month}-${day}`;
-            updateDateHeader();
+            const initialDateString = `${year}-${month}-${day}`;
+            document.getElementById('dateInput').value = initialDateString;
+            console.log("Initial date set to:", initialDateString); // Debugging log
+            updateDateHeader(); // Call to update header with initial date
         };
     </script>
 </body>
