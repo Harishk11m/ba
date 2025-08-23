@@ -159,6 +159,10 @@
                         return;
                     }
 
+                    // Clear previous links
+                    downloadLinks.innerHTML = '';
+                    downloadContainer.classList.remove('hidden');
+
                     // Convert each group to CSV and create a download link
                     uniqueTimeKeys.forEach(timeKey => {
                         const group = groupedData[timeKey];
@@ -171,20 +175,21 @@
                         
                         // Create a file name based on the original name and the time key
                         const safeFileName = timeKey.replace(/[^a-zA-Z0-9.\- ]/g, '_');
-                        const fileName = `${uploadedFile.name.replace(/\.xlsx$/, `_${safeFileName}.csv`)}`;
+                        // Add the row count to the filename
+                        const rowCount = group.length;
+                        const fileName = `${uploadedFile.name.replace(/\.xlsx$/, `_${safeFileName}_${rowCount}_rows.csv`)}`;
 
                         // Create a new link for each file
                         const downloadLink = document.createElement('a');
                         downloadLink.href = url;
                         downloadLink.download = fileName;
-                        downloadLink.textContent = `Download CSV for "${timeKey}"`;
+                        downloadLink.textContent = `Download CSV for "${timeKey}" (${rowCount} rows)`;
                         downloadLink.className = "inline-block w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-xl transition duration-300 ease-in-out shadow-md text-left";
                         
                         downloadLinks.appendChild(downloadLink);
                     });
 
                     statusMessage.textContent = `Successfully split "${uploadedFile.name}" into ${uniqueTimeKeys.length} files.`;
-                    downloadContainer.classList.remove('hidden');
 
                 } catch (error) {
                     console.error('An error occurred during conversion:', error);
