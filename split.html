@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XLSX to CSV Converter</title>
+    <!-- Tailwind CSS for a clean, modern design -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use Inter font -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+
+    <!-- Main container for the application -->
+    <div class="bg-white p-8 rounded-2xl shadow-xl max-w-xl w-full text-center">
+
+        <!-- Title and description -->
+        <h1 class="text-3xl font-bold text-gray-800 mb-2">XLSX to CSV Converter</h1>
+        <p class="text-gray-600 mb-6">Select an Excel (.xlsx) file to convert it to a Comma-Separated Values (.csv) file, split by the exact timestamp.</p>
+
+        <!-- File input element -->
+        <input type="file" id="fileInput" accept=".xlsx" class="hidden" />
+        
+        <!-- Custom button to trigger file input -->
+        <button onclick="document.getElementById('fileInput').click()"
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-xl transition duration-300 ease-in-out shadow-lg transform hover:scale-105 mb-6">
+            Choose an Excel File
+        </button>
+
+        <!-- Input for specifying the timestamp column, initially hidden -->
+        <div id="columnInputContainer" class="hidden mb-4">
+            <label for="timeColumnName" class="block text-gray-700 font-medium mb-2 text-left">Enter the name of the timestamp column:</label>
+            <input type="text" id="timeColumnName" placeholder="e.g., 'Timestamp' or 'DateTime'"
+                   class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            <button id="splitButton"
+                    class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-xl transition duration-300 ease-in-out">
+                Split and Convert
+            </button>
+        </div>
+
+        <!-- Message and status display area -->
+        <div id="statusMessage" class="text-gray-700 font-medium mb-4"></div>
+
+        <!-- Download links container, initially hidden -->
+        <div id="downloadContainer" class="hidden">
+            <h2 class="text-xl font-bold text-gray-800 mb-4">Download your files:</h2>
+            <div id="downloadLinks" class="space-y-3">
+                <!-- Download buttons will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- SheetJS CDN to handle Excel file parsing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+    <script>
+        // Get references to DOM elements
+        const fileInput = document.getElementById('fileInput');
+        const statusMessage = document.getElementById('statusMessage');
+        const columnInputContainer = document.getElementById('columnInputContainer');
+        const timeColumnNameInput = document.getElementById('timeColumnName');
+        const splitButton = document.getElementById('splitButton');
+        const downloadContainer = document.getElementById('downloadContainer');
+        const downloadLinks = document.getElementById('downloadLinks');
+
+        let uploadedFile = null;
+
+        // Listen for a file to be selected
+        fileInput.addEventListener('change', handleFile, false);
+        // Listen for the split button to be clicked
+        splitButton.addEventListener('click', processFile, false);
+
+        /**
+         * Handles the file selection event and stores the file for later processing.
+         * @param {Event} event The file input change event.
+         */
+        function handleFile(event) {
+            uploadedFile = event.target.files[0];
+
+            if (!uploadedFile) {
+                statusMessage.textContent = 'No file selected.';
+                columnInputContainer.classList.add('hidden');
+                return;
+            }
+
+            statusMessage.textContent = `File selected: "${uploadedFile.name}". Please enter the column name to split by.`;
+            columnInputContainer.classList.remove('hidden');
+            downloadContainer.classList.add('hidden');
+            downloadLinks.innerHTML = '';
+        }
+
+        /**
+         * Processes the uploaded file, splits it by time, and generates download links.
+         */
+        function processFile() {
+            if (!uploadedFile) {
+                statusMessage.textContent = 'Please select a file first.';
+                return;
+            }
+
+            const timeColumnName = timeColumnNameInput.value.trim();
+            if (!timeColumnName) {
+                statusMessage.textContent = 'Please enter a column name.';
+                return;
+            }
+
+            statusMessage.textContent = 'Processing...';
+            downloadContainer.classList.add('hidden');
+            downloadLinks.innerHTML = '';
+
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                try {
+                    const data = new Uint8Array(e.target.result);
+                    const workbook = XLSX.read(data, { type: 'array' });
+                    const sheetName = workbook.SheetNames[0];
+                    const worksheet = workbook.Sheets[sheetName];
+
+                    // Convert the sheet to an array of JSON objects
+                    const jsonData = XLSX.utils.sheet_to_json(worksheet);
+
+                    if (jsonData.length === 0) {
+                        statusMessage.textContent = 'Error: The sheet is empty.';
+                        return;
+                    }
+
+                    // Group rows by the specified time column's exact value
+                    const groupedData = {};
+                    jsonData.forEach(row => {
+                        const timeValue = row[timeColumnName];
+                        if (timeValue) {
+                            const key = String(timeValue).trim(); // Use the exact string representation as the key
+                            
+                            if (!groupedData[key]) {
+                                groupedData[key] = [];
+                            }
+                            groupedData[key].push(row);
+                        } else {
+                            // Handle rows with no value in the specified column
+                            const key = 'undated-records';
+                            if (!groupedData[key]) {
+                                groupedData[key] = [];
+                            }
+                            groupedData[key].push(row);
+                        }
+                    });
+
+                    // Check if any groups were created
+                    const uniqueTimeKeys = Object.keys(groupedData);
+                    if (uniqueTimeKeys.length === 0) {
+                        statusMessage.textContent = `No data found to split based on the column "${timeColumnName}".`;
+                        return;
+                    }
+
+                    // Convert each group to CSV and create a download link
+                    uniqueTimeKeys.forEach(timeKey => {
+                        const group = groupedData[timeKey];
+                        // Convert the JSON array back to a CSV string
+                        const groupWorksheet = XLSX.utils.json_to_sheet(group);
+                        const csvData = XLSX.utils.sheet_to_csv(groupWorksheet);
+
+                        const blob = new Blob([csvData], { type: 'text/csv;charset=utf-8;' });
+                        const url = URL.createObjectURL(blob);
+                        
+                        // Create a file name based on the original name and the time key
+                        const safeFileName = timeKey.replace(/[^a-zA-Z0-9.\- ]/g, '_');
+                        const fileName = `${uploadedFile.name.replace(/\.xlsx$/, `_${safeFileName}.csv`)}`;
+
+                        // Create a new link for each file
+                        const downloadLink = document.createElement('a');
+                        downloadLink.href = url;
+                        downloadLink.download = fileName;
+                        downloadLink.textContent = `Download CSV for "${timeKey}"`;
+                        downloadLink.className = "inline-block w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-xl transition duration-300 ease-in-out shadow-md text-left";
+                        
+                        downloadLinks.appendChild(downloadLink);
+                    });
+
+                    statusMessage.textContent = `Successfully split "${uploadedFile.name}" into ${uniqueTimeKeys.length} files.`;
+                    downloadContainer.classList.remove('hidden');
+
+                } catch (error) {
+                    console.error('An error occurred during conversion:', error);
+                    statusMessage.textContent = 'Error: An unexpected error occurred. Please ensure the file is a valid .xlsx file and the column name is correct.';
+                    downloadContainer.classList.add('hidden');
+                }
+            };
+
+            reader.readAsArrayBuffer(uploadedFile);
+        }
+    </script>
+
+</body>
+</html>
