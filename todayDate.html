@@ -7,563 +7,452 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>BA ROSTER MAIL</title>
     <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f4f8;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .main-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            font-size: 31px;
+            margin-bottom: 20px;
+        }
+
+        .open-all-button {
+            background-color: #2980b9;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-bottom: 20px;
+            align-self: center;
+            width: 100%;
+            max-width: 300px;
+            display: block;
+        }
+
+        .open-all-button:hover {
+            background-color: #3498db;
+            transform: translateY(-2px);
+        }
+
+        .open-all-button:active {
+            transform: translateY(0);
+        }
+
         .grid-container {
             border-radius: 21px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            /* Soft, modern background */
-            background: #f5f5f5;
-            padding: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            background: #ecf0f1;
+            padding: 20px;
             gap: 22px;
-            width: auto;
+            width: 100%;
+        }
+        
+        /* The container for each link, input, and button group */
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            padding: 10px;
+            border-radius: 15px;
         }
 
         .grid-item {
-            height: 60px;
-            width: 60px;
-            border-radius: 21px;
-            /* Clean, subtle gradient */
+            height: 80px;
+            width: 120px; /* Adjusted for better spacing */
+            border-radius: 15px;
             background: linear-gradient(to bottom, #ffffff 0%, #f0f0f0 100%);
             border: 1px solid #ddd;
             font-size: 15px;
             text-align: center;
             text-decoration: none;
-            padding: 22px;
-            transition: transform 0.3s;
+            padding: 20px 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             font-weight: bold;
-            box-shadow: 3px 3px 5px #e0e0e0;
-            color: #333; /* Darker text for readability */
-        }
-
-        .grid-item:hover {
-            /* Slightly darker hover */
-            background: linear-gradient(to bottom, #e0e0e0 0%, #d0d0d0 100%);
-            box-shadow: 2px 2px 3px #ccc;
-            transform: scale(0.98);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             word-wrap: break-word;
         }
 
-        h1 {
-            /* Muted, professional header */
-            color: #555;
-            text-align: center;
-            font-size: 31px;
+        .grid-item:hover {
+            background: linear-gradient(to bottom, #e0e0e0 0%, #d0d0d0 100%);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+            transform: scale(1.02);
         }
 
         .base-name {
             text-decoration: none;
-            color: inherit; /* Inherits color from grid-item */
-            word-wrap: break-word;
+            color: inherit;
         }
 
         .fullForm {
             font-size: 11px;
-            /* Subdued full form text */
-            color: #888;
-            word-wrap: break-word;
+            color: #7f8c8d;
             font-weight: normal;
+            margin-top: 5px;
+        }
+        
+        .input-group input {
+            width: 50px;
+            text-align: center;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            padding: 5px;
+        }
+
+        .go-button {
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .go-button:hover {
+            background: #0056b3;
         }
     </style>
 </head>
 
 <body>
+    <div class="main-container">
+        <h1 id="currentDateHeader"></h1>
+        
+        <!-- The single button to open all mail links -->
+        <button class="open-all-button" onclick="openAllTabs()">Open All Roster Mails</button>
 
-    <h1 id="currentDateHeader"></h1>
-    <div class="grid-container">
-        <! -- ----------------------AMD -------------------->
-        <a class="base-name" href="
-        mailto:
-            medical.amd@spicejet.com
-
-        ?cc=
-    amd.engg@spicejet.com,
-            admin.engg@spicejet.com,
-            javed.kalam@spicejet.com,
-            saket.singh,
-            uma.kumar@spicejet.com
-
-        &subject=
-AMD //Candidates For BA Test // <span id='amdDate'></span>
-
-                &body=
-Dear Medical Team,
-%0D%0A
-%0D%0A
-Please find the details of randomly selected candidates for the BA test for <span id='amdDateBody'></span>.
-
-%0D%0A
-%0D%0A
-    " target="_blank">
-
-            <div class="grid-item">
-                AMD<br><span class="fullForm">Ahmedabad</span>
+        <div class="grid-container">
+            <!-- AMD -->
+            <div class="input-group">
+                <a class="base-name" href="#"
+                    data-mailto="mailto:medical.amd@spicejet.com?cc=amd.engg@spicejet.com,admin.engg@spicejet.com,javed.kalam@spicejet.com,saket.singh,uma.kumar@spicejet.com&subject=AMD //Candidates For BA Test // <span id='amdDate'></span>&body=Dear Medical Team,%0D%0A%0D%0APlease find the details of randomly selected candidates for the BA test for <span id='amdDateBody'></span>.%0D%0A%0D%0A"
+                    target="_blank">
+                    <div class="grid-item">
+                        AMD<br><span class="fullForm">Ahmedabad</span>
+                    </div>
+                </a>
+                <input type="number" id="amd-input" value="0">
+                <button class="go-button" onclick="openTabs('amd-input')">Go</button>
             </div>
-        </a>
 
-        <! -- -----------------------------BHU-------------- -------------------->
-        <a class="base-name" href="
-        mailto:
-            medical.bhu@spicejet.com
+            <!-- BHU -->
+<!--             <div class="input-group">
+                <a class="base-name" href="#"
+                    data-mailto="mailto:medical.bhu@spicejet.com?cc=bhu.engg@spicejet.com,admin.engg@spicejet.com,javed.kalam@spicejet.com,sm.bhu@spicejet.com,manish.tandon@spicejet.com,&subject=BHU //Candidates For BA Test // <span id='bhuDate'></span>&body=Dear Medical Team,%0D%0A%0D%0APlease find the details of randomly selected candidates for the BA test for <span id='bhuDateBody'></span>.%0D%0A%0D%0A"
+                    target="_blank">
+                    <div class="grid-item">
+                        BHU<br><span class="fullForm">Bhavnagar</span>
+                    </div>
+                </a>
+                <input type="number" id="bhu-input" value="0">
+                <button class="go-button" onclick="openTabs('bhu-input')">Go</button>
+            </div> -->
 
-        ?cc=
-            bhu.engg@spicejet.com,
-            admin.engg@spicejet.com,
-            javed.kalam@spicejet.com,
-            sm.bhu@spicejet.com,
-            manish.tandon@spicejet.com,
-
-        &subject=
-BHU //Candidates For BA Test // <span id='bhuDate'></span>
-
-                &body=
-Dear Medical Team,
-%0D%0A
-%0D%0A
-Please find the details of randomly selected candidates for the BA test for <span id='bhuDateBody'></span>.
-
-%0D%0A
-%0D%0A
-    " target="_blank">
-
-
-            <div class="grid-item">
-                BHU<br><span class="fullForm">Bhavnagar</span>
+            <!-- BOM LMD -->
+            <div class="input-group">
+                <a class="base-name" href="#"
+                    data-mailto="mailto:medical.bom@spicejet.com?cc=bom.engg@spicejet.com,admin.engg@spicejet.com,bom.stores@spicejet.com,javed.kalam@spicejet.com&subject=BOM LMD//Candidates For BA Test // <span id='bomDate'></span>&body=Dear Medical Team,%0D%0A%0D%0APlease find the details of randomly selected candidates for the BA test for <span id='bomDateBody'></span>.%0D%0A%0D%0A"
+                    target="_blank">
+                    <div class="grid-item">
+                        BOM LMD<br><span class="fullForm">Mumbai</span>
+                    </div>
+                </a>
+                <input type="number" id="bomlmd-input" value="0">
+                <button class="go-button" onclick="openTabs('bomlmd-input')">Go</button>
             </div>
-        </a>
 
 
-        <! -- ---------------------------BOM LMD------------------ -------------------->
-        <a class="base-name" href="
-        mailto:
-
-            medical.bom@spicejet.com
-
-
-        ?cc=
-
-            bom.engg@spicejet.com,
-            admin.engg@spicejet.com,
-            bom.stores@spicejet.com,
-            javed.kalam@spicejet.com
-        &subject=
-BOM LMD//Candidates For BA Test // <span id='bomDate'></span>
-
-                &body=
-Dear Medical Team,
-%0D%0A
-%0D%0A
-Please find the details of randomly selected candidates for the BA test for <span id='bomDateBody'></span>.
-
-%0D%0A
-%0D%0A
-    " target="_blank">
-
-            <div class="grid-item">
-                BOM LMD<br><span class="fullForm">Mumbai</span>
+            <!-- BOM DRIVER -->
+            <div class="input-group">
+                <a class="base-name" href="#"
+                    data-mailto="mailto:medical.bom@spicejet.com?cc=bom.engg@spicejet.com,admin.engg@spicejet.com,bom.stores@spicejet.com,javed.kalam@spicejet.com,gsd.bom@spicejet.com&subject=BOM DRIVER //Candidates For BA Test // <span id='bomDate'></span>&body=Dear Medical Team,%0D%0A%0D%0APlease find the details of randomly selected candidates for the BA test for <span id='bomDateBody'></span>.%0D%0A%0D%0A"
+                    target="_blank">
+                    <div class="grid-item">
+                        BOM DRIVER<br><span class="fullForm">Mumbai</span>
+                    </div>
+                </a>
+                <input type="number" id="bomdriver-input" value="0">
+                <button class="go-button" onclick="openTabs('bomdriver-input')">Go</button>
             </div>
-        </a>
 
 
-<! -- ---------------------------BOM DRIVER------------------ -------------------->
-        <a class="base-name" href="
-        mailto:
-
-            medical.bom@spicejet.com
-
-
-        ?cc=
-
-            bom.engg@spicejet.com,
-            admin.engg@spicejet.com,
-            bom.stores@spicejet.com,
-            javed.kalam@spicejet.com,
-            gsd.bom@spicejet.com
-        &subject=
-BOM DRIVER //Candidates For BA Test // <span id='bomDate'></span>
-
-                &body=
-Dear Medical Team,
-%0D%0A
-%0D%0A
-Please find the details of randomly selected candidates for the BA test for <span id='bomDateBody'></span>.
-
-%0D%0A
-%0D%0A
-    " target="_blank">
-
-            <div class="grid-item">
-                BOM DRIVER<br><span class="fullForm">Mumbai</span>
+            <!-- BOM GSD -->
+            <div class="input-group">
+                <a class="base-name" href="#"
+                    data-mailto="mailto:medical.bom@spicejet.com?cc=bom.engg@spicejet.com,admin.engg@spicejet.com,bom.stores@spicejet.com,javed.kalam@spicejet.com,gsd.bom@spicejet.com&subject=BOM GSD //Candidates For BA Test // <span id='bomDate'></span>&body=Dear Medical Team,%0D%0A%0D%0APlease find the details of randomly selected candidates for the BA test for <span id='bomDateBody'></span>.%0D%0A%0D%0A"
+                    target="_blank">
+                    <div class="grid-item">
+                        BOM GSD<br><span class="fullForm">Mumbai</span>
+                    </div>
+                </a>
+                <input type="number" id="bomgsd-input" value="0">
+                <button class="go-button" onclick="openTabs('bomgsd-input')">Go</button>
             </div>
-        </a>
 
-
-
-<! -- ---------------------------BOM GSD------------------ -------------------->
-        <a class="base-name" href="
-        mailto:
-
-            medical.bom@spicejet.com
-
-
-        ?cc=
-
-            bom.engg@spicejet.com,
-            admin.engg@spicejet.com,
-            bom.stores@spicejet.com,
-            javed.kalam@spicejet.com,
-            gsd.bom@spicejet.com
-          &subject=
-BOM GSD //Candidates For BA Test // <span id='bomDate'></span>
-
-
-                &body=
-Dear Medical Team,
-%0D%0A
-%0D%0A
-Please find the details of randomly selected candidates for the BA test for <span id='bomDateBody'></span>.
-
-%0D%0A
-%0D%0A
-    " target="_blank">
-
-            <div class="grid-item">
-                BOM GSD<br><span class="fullForm">Mumbai</span>
+            <!-- IXY -->
+            <div class="input-group">
+                <a class="base-name" href="#"
+                    data-mailto="mailto:medical.ixy@spicejet.com,?cc=harish.k@spicejet.com,javed.kalam@spicejet.com,admin.engg@spicejet.com,ixy.engg@spicejet.com,ravindra.chavan@spicejet.com&subject=IXY //Candidates For BA Test // <span id='ixyDate'></span>&body=Dear Medical Team,%0D%0A%0D%0APlease find the details of randomly selected candidates for the BA test for <span id='ixyDateBody'></span>.%0D%0A%0D%0A"
+                    target="_blank">
+                    <div class="grid-item">
+                        IXY<br><span class="fullForm">Kandla</span>
+                    </div>
+                </a>
+                <input type="number" id="ixy-input" value="0">
+                <button class="go-button" onclick="openTabs('ixy-input')">Go</button>
             </div>
-        </a>
 
-<! -- ---------------------------IXY------------------ -------------------->
-        <a class="base-name" href="
-        mailto:
-            medical.ixy@spicejet.com,
+            <!-- SAG -->
+<!--             <div class="input-group">
+                <a class="base-name" href="#"
+                    data-mailto="mailto:medical.sag@spicejet.com,?cc=sachin.magar@spicejet.com,shirdi.engg@spicejet.com,admin.engg@spicejet.com,javed.kalam@spicejet.com&subject=SAG //Candidates For BA Test // <span id='sagDate'></span>&body=Dear Medical Team,%0D%0A%0D%0APlease find the details of randomly selected candidates for the BA test for <span id='sagDateBody'></span>.%0D%0A%0D%0A"
+                    target="_blank">
+                    <div class="grid-item">
+                        SAG<br><span class="fullForm">Shirdi</span>
+                    </div>
+                </a>
+                <input type="number" id="sag-input" value="0">
+                <button class="go-button" onclick="openTabs('sag-input')">Go</button>
+            </div> -->
 
-        ?cc=
-            harish.k@spicejet.com,
-            javed.kalam@spicejet.com,
-            admin.engg@spicejet.com,
-            ixy.engg@spicejet.com,
-            ravindra.chavan@spicejet.com
+            <!-- STV -->
+<!--             <div class="input-group">
+                <a class="base-name" href="#"
+                    data-mailto="mailto: medical.metas@gmail.com, medical.stv@spicejet.com?cc=javed.kalam@spicejet.com,surat.engg@spicejet.com,admin.engg@spicejet.com,ashutosh.chandan@spicejet.com&subject=STV  //Candidates For BA Test // <span id='stvDate'></span>&body=Dear Medical Team,%0D%0A%0D%0APlease find the details of randomly selected candidates for the BA test for <span id='stvDateBody'></span>."
+                    target="_blank">
+                    <div class="grid-item">
+                        STV<br><span class="fullForm">Surat</span>
+                    </div>
+                </a>
+                <input type="number" id="stv-input" value="0">
+                <button class="go-button" onclick="openTabs('stv-input')">Go</button>
+            </div> -->
 
-        &subject=
-IXY //Candidates For BA Test // <span id='ixyDate'></span>
-
-                &body=
-Dear Medical Team,
-%0D%0A
-%0D%0A
-Please find the details of randomly selected candidates for the BA test for <span id='ixyDateBody'></span>.
-
-%0D%0A
-%0D%0A
-
-    " target="_blank">
-
-            <div class="grid-item">
-                IXY<br><span class="fullForm">Kandla</span>
+            <!-- PBD -->
+            <div class="input-group">
+                <a class="base-name" href="#"
+                    data-mailto="mailto: medical.pbd@spicejet.com?cc=javed.kalam@spicejet.com,admin.engg@spicejet.com,pbd.engg@spicejet.com,chetan.bhanka@spicejet.com&subject=PBD //Candidates For BA Test // <span id='pbdDate'></span>&body=Dear Medical Team,%0D%0A%0D%0APlease find the details of randomly selected candidates for the BA test for <span id='pbdDateBody'></span>."
+                    target="_blank">
+                    <div class="grid-item">
+                        PBD<br><span class="fullForm">Porbandar</span>
+                    </div>
+                </a>
+                <input type="number" id="pbd-input" value="0">
+                <button class="go-button" onclick="openTabs('pbd-input')">Go</button>
             </div>
-        </a>
 
-        <! -- --------------------------------SAG--------------- -------------------->
-        <a class="base-name" href="
-        mailto:
-            medical.sag@spicejet.com,
-
-        ?cc=
-            sachin.magar@spicejet.com,
-            shirdi.engg@spicejet.com,
-            admin.engg@spicejet.com,
-            javed.kalam@spicejet.com
-
-        &subject=
-SAG //Candidates For BA Test // <span id='sagDate'></span>
-
-                &body=
-Dear Medical Team,
-%0D%0A
-%0D%0A
-Please find the details of randomly selected candidates for the BA test for <span id='sagDateBody'></span>.
-
-%0D%0A
-%0D%0A
-    " target="_blank">
-
-            <div class="grid-item">
-                SAG<br><span class="fullForm">Shirdi</span>
+            <!-- Blank -->
+<!--             <div class="input-group">
+                <a class="base-name" href="#"
+                    data-mailto="mailto:?cc=&subject=//Candidates For BA Test // <span id='blank1Date'></span>&body=Dear Medical Team,%0D%0A%0D%0APlease find the details of randomly selected candidates for the BA test."
+                    target="_blank">
+                    <div class="grid-item">
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+                </a>
+                <input type="number" id="blank1-input" value="0">
+                <button class="go-button" onclick="openTabs('blank1-input')">Go</button>
             </div>
-        </a>
+            
+            <!-- Blank -->
+<!--             <div class="input-group">
+                <a class="base-name" href="#"
+                    data-mailto="mailto:?cc=&subject=//Candidates For BA Test // <span id='blank2Date'></span>&body=Dear Medical Team,%0D%0A%0D%0APlease find the details of randomly selected candidates for the BA test."
+                    target="_blank">
+                    <div class="grid-item">
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+                </a>
+                <input type="number" id="blank2-input" value="0">
+                <button class="go-button" onclick="openTabs('blank2-input')">Go</button>
+            </div> -->
 
+            <!-- Blank -->
+<!--             <div class="input-group">
+                <a class="base-name" href="#"
+                    data-mailto="mailto:?cc=&subject=//Candidates For BA Test // <span id='blank3Date'></span>&body=Dear Medical Team,%0D%0A%0D%0APlease find the details of randomly selected candidates for the BA test."
+                    target="_blank">
+                    <div class="grid-item">
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+                </a>
+                <input type="number" id="blank3-input" value="0">
+                <button class="go-button" onclick="openTabs('blank3-input')">Go</button>
+            </div> -->
+            
+            <!-- Blank (Temporary) -->
+<!--             <div class="input-group">
+                <a class="base-name" href="#"
+                    data-mailto="mailto:?cc=admin.engg@spicejet.com&subject=//Candidates For BA Test // <span id='blank4Date'></span>&body=Dear Medical Team,%0D%0A%0D%0APlease find the details of randomly selected candidates for the BA test."
+                    target="_blank">
+                    <div class="grid-item">
+                        BLANK<br><span class="fullForm">Temporary</span>
+                    </div>
+                </a>
+                <input type="number" id="blank4-input" value="0">
+                <button class="go-button" onclick="openTabs('blank4-input')">Go</button>
+            </div> -->
 
-        <! -- --------------------------------STV--------------- -------------------->
-        <a class="base-name" href="
-        mailto: medical.metas@gmail.com,
-                medical.stv@spicejet.com
-
-
-        ?cc=javed.kalam@spicejet.com,
-            surat.engg@spicejet.com,
-            admin.engg@spicejet.com,
-            ashutosh.chandan@spicejet.com
-
-
-        &subject=
-STV  //Candidates For BA Test // <span id='stvDate'></span>
-
-     &body=
-Dear Medical Team,
-%0D%0A
-%0D%0A
-Please find the details of randomly selected candidates for the BA test for <span id='stvDateBody'></span>.
-    " target="_blank">
-
-            <div class="grid-item">
-                STV<br><span class="fullForm">Surat</span>
+            <!-- ATT (Attachment) -->
+<!--             <div class="input-group">
+                <a class="base-name" href="#"
+                    data-mailto="mailto:?cc= harish.k@spicejet.com,ixy.engg@spicejet.com,&subject=&body=Dear Sir%0D%0A%0D%0APlease find the attachment below."
+                    target="_blank">
+                    <div class="grid-item">
+                        ATT<br><span class="fullForm">Attachment</span>
+                    </div>
+                </a>
+                <input type="number" id="att-input" value="0">
+                <button class="go-button" onclick="openTabs('att-input')">Go</button>
+            </div> -->
+ 
+            <!-- CONSOLIDATED SHEET -->
+            <div class="input-group">
+                <a class="base-name" href="#"
+                    data-mailto="mailto:admin.engg@spicejet.com?cc=harish.k@spicejet.com&subject=BOM  // CONSOLIDATED SHEET // <span id='consolidatedDate'></span>&body=Dear Admin,%0D%0A%0D%0AGreetings of the day!%0D%0A%0D%0APlease find the consolidated sheet attached below."
+                    target="_blank">
+                    <div class="grid-item">
+                        CONSOLIDATED SHEET<br>
+                    </div>
+                </a>
+                <input type="number" id="consolidated-input" value="0">
+                <button class="go-button" onclick="openTabs('consolidated-input')">Go</button>
             </div>
-        </a>
 
-
-
-        <! -- --------------------------------PBD--------------- -------------------->
-        <a class="base-name" href="
-        mailto: medical.pbd@spicejet.com
-
-
-        ?cc=javed.kalam@spicejet.com,
-            admin.engg@spicejet.com,
-            pbd.engg@spicejet.com,
-            chetan.bhanka@spicejet.com
-
-
-        &subject=
-PBD //Candidates For BA Test // <span id='pbdDate'></span>
-
-     &body=
-Dear Medical Team,
-%0D%0A
-%0D%0A
-Please find the details of randomly selected candidates for the BA test for <span id='pbdDateBody'></span>.
-    " target="_blank">
-
-            <div class="grid-item">
-                PBD<br><span class="fullForm">Porbandar</span>
-            </div>
-        </a>
-
-        <! -- ----------------------------------------------- -------------------->
-
-        <a class="base-name" href="
-        mailto:
-
-
-        ?cc=
-
-
-        &subject=
-            //Candidates For BA Test // <span id='blank1Date'></span>
-
-     &body=
-Dear Medical Team,
-%0D%0A
-%0D%0A
-Please find the details of randomly selected candidates for the BA test.
-    " target="_blank">
-
-            <div class="grid-item">
-                <br><br>
-            </div>
-        </a>
-        <a class="base-name" href="
-        mailto:
-
-
-        ?cc=
-
-
-        &subject=
-            //Candidates For BA Test // <span id='blank2Date'></span>
-
-     &body=
-Dear Medical Team,
-%0D%0A
-%0D%0A
-Please find the details of randomly selected candidates for the BA test.
-    " target="_blank">
-
-            <div class="grid-item">
-                <br><br>
-            </div>
-        </a>
-
-        <a class="base-name" href="
-        mailto:
-
-
-        ?cc=
-
-
-        &subject=
-            //Candidates For BA Test // <span id='blank3Date'></span>
-
-     &body=
-Dear Medical Team,
-%0D%0A
-%0D%0A
-Please find the details of randomly selected candidates for the BA test.
-    " target="_blank">
-
-            <div class="grid-item">
-                <br><br>
-            </div>
-        </a>
-
-        <a class="base-name" href="
-        mailto:
-
-
-        ?cc=admin.engg@spicejet.com
-
-
-        &subject=
-            //Candidates For BA Test // <span id='blank4Date'></span>
-
-     &body=
-Dear Medical Team,
-%0D%0A
-%0D%0A
-Please find the details of randomly selected candidates for the BA test.
-    " target="_blank">
-
-            <div class="grid-item">
-                BLANK<br><span class="fullForm">Temporary</span>
-            </div>
-        </a>
-
-        <a class="base-name" href="
-        mailto:
-
-
-        ?cc= harish.k@spicejet.com,
-             ixy.engg@spicejet.com,
-
-
-        &subject=
-
-
-     &body=
-Dear Sir
-%0D%0A
-%0D%0A
-Please find the attachment below.
-    " target="_blank">
-
-            <div class="grid-item">
-                ATT<br><span class="fullForm">Attachment</span>
-            </div>
-        </a>
-
-
-        <a class="base-name" href="
-        mailto:admin.engg@spicejet.com
-
-
-        ?cc=harish.k@spicejet.com
-
-
-        &subject=
-BOM  // CONSOLIDATED SHEET // <span id='consolidatedDate'></span>
-
-             &body=
-Dear Admin,
-%0D%0A
-%0D%0A
-Greetings of the day!
-%0D%0A
-%0D%0A
-Please find the consolidated sheet attached below.
-    " target="_blank">
-
-            <div class="grid-item">
-                CONSOLIDATED SHEET
-            </div>
-        </a>
-
-        <a class="base-name" href="
-        mailto:admin.engg@spicejet.com
-
-
-        ?cc=harish.k@spicejet.com,
-            ixy.engg@spicejet.com,
-            javed.kalam@spicejet.com
-
-
-        &subject=
-
-            IXY // ROSTER// <span id='ixyRosterDate'></span>
-
-                    &body=
-Dear Admin,
-%0D%0A
-%0D%0A
-Greetings of the day!
-%0D%0A
-%0D%0A
-Please find the IXY roster sheet attached below.
-
-    " target="_blank">
-
-            <div class="grid-item">
-                IXY<br>ROSTER
-            </div>
-        </a>
-
-
-        <a class="base-name" href="
-        mailto: javed.kalam@spicejet.com
-
-
-        ?cc= ixy.engg@spicejet.com,
-             harish.k@spicejet.com
-
-
-        &subject=
-             SAS REPORT //
-
-     &body=
-Dear Medical Team,
-%0D%0A
-%0D%0A
-Please find the details of randomly selected candidates for the BA test.
-    " target="_blank">
-
-            <div class="grid-item">
-                SAS REPORT<br><span class="fullForm">Jan,Apr,July,Oct</span>
-            </div>
-        </a>
+            <!-- IXY ROSTER -->
+<!--             <div class="input-group">
+                <a class="base-name" href="#"
+                    data-mailto="mailto:admin.engg@spicejet.com?cc=harish.k@spicejet.com,ixy.engg@spicejet.com,javed.kalam@spicejet.com&subject=IXY // ROSTER// <span id='ixyRosterDate'></span>&body=Dear Admin,%0D%0A%0D%0AGreetings of the day!%0D%0A%0D%0APlease find the IXY roster sheet attached below."
+                    target="_blank">
+                    <div class="grid-item">
+                        IXY<br>ROSTER<br>
+                    </div>
+                </a>
+                <input type="number" id="ixyroster-input" value="0">
+                <button class="go-button" onclick="openTabs('ixyroster-input')">Go</button>
+            </div> -->
+
+            <!-- SAS REPORT -->
+<!--             <div class="input-group">
+                <a class="base-name" href="#"
+                    data-mailto="mailto: javed.kalam@spicejet.com?cc= ixy.engg@spicejet.com,harish.k@spicejet.com&subject=SAS REPORT //&body=Dear Medical Team,%0D%0A%0D%0APlease find the details of randomly selected candidates for the BA test."
+                    target="_blank">
+                    <div class="grid-item">
+                        SAS REPORT<br><span class="fullForm">Jan,Apr,July,Oct</span>
+                    </div>
+                </a>
+                <input type="number" id="sas-input" value="0">
+                <button class="go-button" onclick="openTabs('sas-input')">Go</button>
+            </div> -->
+        </div>
     </div>
-    </a>
+
     <script>
+        // Function to open all tabs at once, one for each mail link.
+        function openAllTabs() {
+            // Select all anchor elements with the 'base-name' class
+            const mailtoLinks = document.querySelectorAll('.base-name');
+
+            // Loop through each link found
+            mailtoLinks.forEach(link => {
+                // Get the mailto link from the 'data-mailto' attribute
+                const mailtoLink = link.getAttribute('data-mailto');
+                
+                // Open a new browser tab for each link
+                window.open(mailtoLink, '_blank');
+            });
+        }
+
+        // Function to open a specific number of tabs for a single link.
+        function openTabs(inputId) {
+            const inputElement = document.getElementById(inputId);
+            const numTabs = parseInt(inputElement.value, 10);
+            
+            // The link is the previous sibling element of the input's parent.
+            const linkElement = inputElement.previousElementSibling;
+
+            if (linkElement && linkElement.tagName === 'A' && !isNaN(numTabs) && numTabs > 0) {
+                const mailtoLink = linkElement.getAttribute('data-mailto');
+                for (let i = 0; i < numTabs; i++) {
+                    window.open(mailtoLink, '_blank');
+                }
+            } else {
+                // Using a message box instead of alert() for better UI/UX
+                const messageBox = document.createElement('div');
+                messageBox.style.cssText = `
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background-color: white;
+                    padding: 20px;
+                    border-radius: 10px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                    z-index: 1000;
+                    text-align: center;
+                `;
+                messageBox.innerHTML = `
+                    <p>Please enter a valid number greater than 0.</p>
+                    <button onclick="this.parentNode.remove()" style="margin-top: 10px; padding: 5px 15px; border-radius: 5px; border: 1px solid #ccc;">OK</button>
+                `;
+                document.body.appendChild(messageBox);
+            }
+        }
+
+        // Function to update the date on the header and in the mailto links
         function updateDates() {
-            const today = new Date(); // Use today's date directly
+            const today = new Date();
 
             const day = today.getDate().toString().padStart(2, '0');
             const month = today.toLocaleString('en-US', {
                 month: 'short'
             }).toUpperCase();
-            const year = today.getFullYear();
-
+            
             const formattedDate = `${day} ${month}`;
 
             document.getElementById('currentDateHeader').textContent = `Date: ${formattedDate}`;
 
-            // Update mailto links dynamically
-            const mailtoLinks = document.querySelectorAll('.base-name'); // Select all mailto links
-
+            const mailtoLinks = document.querySelectorAll('.base-name');
             mailtoLinks.forEach(link => {
-                let href = link.getAttribute('href');
-                // Replace all span placeholders with the formatted today's date.
+                let href = link.getAttribute('data-mailto');
+                // Use a regular expression to replace all occurrences of date placeholders
                 href = href.replace(/<span id='(.*?)Date(Body)?'><\/span>/g, formattedDate);
-                link.setAttribute('href', href); // Update the href attribute.
+                link.setAttribute('data-mailto', href);
             });
         }
 
+        // Call the updateDates function when the page loads
         window.onload = updateDates;
     </script>
 </body>
