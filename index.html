@@ -215,7 +215,7 @@
 
                         // Create the final file name
                         const timePart = timeKey === 'undated-records' ? 'UNDATED' : timeKey.replace(/[\\/:*?"<>|]/g, '_');
-                        const fileName = `${originalFileNameWithoutExtension}_${timePart}_${safeFColumnValue}_${rowCount}_ROWS.csv`.trim();
+                        const fileName = `${rowCount}_ROWS_${originalFileNameWithoutExtension}_${timePart}_${safeFColumnValue}.csv`.trim();
                         
                         // Add to the global array for ZIP download
                         allCSVs.push({ filename: fileName, data: csvData });
